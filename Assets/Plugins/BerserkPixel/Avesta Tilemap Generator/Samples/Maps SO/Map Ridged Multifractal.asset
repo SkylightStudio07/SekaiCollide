@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b02373308b442b870e9ee2eea88d80, type: 3}
+  m_Name: Map Ridged Multifractal
+  m_EditorClassIdentifier: 
+  width: 300
+  height: 300
+  fillPercent: 0.455
+  seed: 38.79824
+  invert: 0
+  octaves: 3
+  persistence: 2.53
+  lacunarity: 2.23
+  threshold: 0.66

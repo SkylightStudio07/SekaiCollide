@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2256dfb050848398afc547a06a381a2, type: 3}
+  m_Name: Map Sparse Convolution
+  m_EditorClassIdentifier: 
+  width: 200
+  height: 200
+  type: 5
+  fillPercent: 0.632
+  sigma: 1.91
+  seed: 1452.217
+  kernelSize: 17
+  numberOfPoints: 512
+  invert: 0

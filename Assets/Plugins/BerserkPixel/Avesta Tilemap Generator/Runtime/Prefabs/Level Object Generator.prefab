@@ -1,0 +1,193 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2994562543977902136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2994562543977902138}
+  - component: {fileID: 2994562543977902137}
+  - component: {fileID: 2994562543977902139}
+  m_Layer: 0
+  m_Name: Level Object Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2994562543977902138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994562543977902136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2994562543977902137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994562543977902136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a660677b2324f94bb5385de72cf65bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapName: 
+  objectToSave: {fileID: 0}
+  layers:
+  - name: Basic Random [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: d3d03d142128e4bc797092ab311f0f1e, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Cellular Automata [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 1e3c7ed70404e40aabb71ed5103b0a01, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Fractal Noise [ACTIVE]
+    active: 1
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 295ebf83c7490bb44846a53451d24069, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4dfdb11acc2de1e4eba2f481f80ea3af, type: 3}
+  - name: Full Grid [ACTIVE]
+    active: 1
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: d385d3538a5274c879a414b0dab6524f, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Game Of Life [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 6b03776169e7f4d26b40cefd0499f369, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Island [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: e75b6631a2f338647bc4ee00b160f591, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Path [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 2496ba6b91c0e48f78913aaffc69e8a8, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Perlin Noise [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 3b63b962f3aea43f2a9de98b58f3ad86, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+  - name: Random Walk [INACTIVE]
+    active: 0
+    isAdditive: 0
+    tilemap: {fileID: 0}
+    mapConfig: {fileID: 11400000, guid: 693da01eb1a074d748f8d74b7a0dcf18, type: 2}
+    tile: {fileID: -8679921383154817045, guid: 4464092d14636a849b832bb020bc6753, type: 3}
+--- !u!114 &2994562543977902139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994562543977902136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137df2ccc2974bf6bae645debe9aa767, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTilemap: {fileID: 0}
+  obstaclesTilemaps: []
+  autoUpdate: 0
+  objects:
+  - name: treePine
+    prefab: {fileID: 919132149155446097, guid: 49e4ec0b8ed11a64daa9996c7f133cce, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.06
+    maxScaleVariation: 0.51
+  - name: tree
+    prefab: {fileID: 919132149155446097, guid: f6e03c4ba9e4d0e4095bf85afd042ff6, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  - name: flowers
+    prefab: {fileID: 919132149155446097, guid: 0a56a5af5c6e4e943b827e698d47f9cd, type: 3}
+    objectType: 2
+    weight: 0.566
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.1
+    maxScaleVariation: 0.4
+  - name: plant
+    prefab: {fileID: 919132149155446097, guid: cbf68bfaef7cd4e48a5ef881c3f5f846, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  - name: bomb
+    prefab: {fileID: 919132149155446097, guid: 0d331f3b01d1e5d4a897971d8dffbaf5, type: 3}
+    objectType: 2
+    weight: 0.055
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0
+    maxScaleVariation: 0
+  - name: coinGold
+    prefab: {fileID: 919132149155446097, guid: db5f90419ac606e498d80ec09b72fedf, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0
+    maxScaleVariation: 0
+  - name: chest
+    prefab: {fileID: 919132149155446097, guid: c7f9c1738201db14e959b880a4c0608d, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  - name: heart
+    prefab: {fileID: 919132149155446097, guid: 2f40e82d829664f4ea94e69a41b97241, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  - name: spikeBlock
+    prefab: {fileID: 919132149155446097, guid: c8caefe23dd64c440be3b0d488287e36, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  - name: stones
+    prefab: {fileID: 919132149155446097, guid: 92c3f24f32419344e90e11dcfd2341f6, type: 3}
+    objectType: 2
+    weight: 0.098
+    offset: {x: 0, y: 0.5, z: 0}
+    minScaleVariation: 0.14
+    maxScaleVariation: 0.4
+  objectFillPercent: 3
+  useClusters: 0
+  maxObjectsPerCluster: 4
+  spacing: 2

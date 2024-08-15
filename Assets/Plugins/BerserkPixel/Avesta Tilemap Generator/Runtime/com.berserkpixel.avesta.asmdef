@@ -1,0 +1,19 @@
+{
+  "name": "com.berserkpixel.avesta",
+  "rootNamespace": "",
+  "references": [
+    "Unity.2D.Tilemap.Extras",
+    "Unity.Mathematics",
+    "Unity.Burst",
+    "Unity.Collections"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
