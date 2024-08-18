@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 34c0365e297d6814d92f9f7667daba79
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nationOverlayPrefab: {fileID: 3419472461174162154, guid: 893f55cccf6615c4c933a95b5d6da74c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
