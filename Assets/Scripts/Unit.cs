@@ -10,39 +10,62 @@ public class Unit : MonoBehaviour
     public LayerMask territoryLayer;
 
     public GameObject nationOverlayPrefab;
-    [SerializeField] private bool hasFoundedNation = false;
+    private bool hasFoundedNation = false;
     private Vector2 targetPosition;
     private float searchTime = 0f;
     private float maxSearchTime = 7f; // 7초 동안 자리를 못 찾으면 합류 시도
     public float checkRadius = 10f; // 나라가 겹치는지 확인할 반경
 
     public string UnitName;
-    public CulturalGroup UnitCulture; // 유닛의 문화권 정보
-    private NationLoader nationLoader; // NationLoader 스크립트를 참조
+    [SerializeField] private CulturalGroup UnitCulture; // 유닛의 문화권 정보, 에디터에서 확인 가능
+    private NationLoader nationLoader;
+    private CountryNameLoader countryNameLoader;
+    private GovernmentTypeLoader governmentTypeLoader;
 
-    private bool isAttemptingToFoundNation = false;
+    [SerializeField] private string countryName; // 유닛이 속한 국가 이름 (에디터에서 확인 가능)
+    private string governmentType = "Republic"; // 기본 정부 체제 예시
 
     void Start()
     {
-        // 게임 내에서 NationLoader를 자동으로 찾음
         nationLoader = FindObjectOfType<NationLoader>();
+        countryNameLoader = FindObjectOfType<CountryNameLoader>();
+        governmentTypeLoader = FindObjectOfType<GovernmentTypeLoader>();
 
-        if (nationLoader == null)
+        if (nationLoader == null || countryNameLoader == null || governmentTypeLoader == null)
         {
-            Debug.LogError("NationLoader를 찾을 수 없습니다. GameManager에 NationLoader 스크립트가 있는지 확인하세요.");
+            Debug.LogError("필수 로더를 찾을 수 없습니다. GameManager에 스크립트가 있는지 확인하세요.");
             return;
         }
 
-        // 임시로 특정 국가의 첫 번째 문화권을 가져옴 (테스트 목적)
-        Race selectedRace = nationLoader.nationsData.Races[0]; // 첫 번째 종족 (예: Human)
-        UnitCulture = selectedRace.CulturalSphere[0]; // 첫 번째 문화권 (예: Western - Germanic - Bavarian)
+        // 종족을 무작위로 선택
+        Race selectedRace = nationLoader.nationsData.Races[Random.Range(0, nationLoader.nationsData.Races.Count)];
 
-        // 유닛 정보 출력
-        Debug.Log($"유닛 이름: {UnitName}");
-        Debug.Log($"문화권: {UnitCulture.MajorCulture} - {UnitCulture.SubCulture} - {UnitCulture.MicroCulture}");
+        // 선택된 종족의 문화권 중 하나를 무작위로 선택
+        UnitCulture = selectedRace.CulturalSphere[Random.Range(0, selectedRace.CulturalSphere.Count)];
+
+        // XML에서 문화권에 따른 나라 이름 가져오기
+        string baseCountryName = GetCountryNameFromCulture(UnitCulture.MicroCulture);
+
+        // 정부 체제를 무작위로 선택
+        governmentType = GetRandomGovernmentType();
+
+        // XML에서 정부 타입을 가져와 무작위 접두사와 접미사를 적용
+        GovernmentType selectedGovernment = governmentTypeLoader.GetGovernmentType(governmentType);
+        if (selectedGovernment != null)
+        {
+            string prefix = governmentTypeLoader.GetRandomPrefix(selectedGovernment);
+            countryName = $"{prefix} {baseCountryName} {selectedGovernment.Suffix}".Trim();
+        }
+        else
+        {
+            countryName = baseCountryName; // 정부 타입을 찾지 못한 경우 기본 이름 사용
+        }
+
+        Debug.Log($"유닛 이름: {UnitName}, 국적: {countryName}");
 
         SetNewRandomTarget();
     }
+
 
     void Update()
     {
@@ -117,7 +140,7 @@ public class Unit : MonoBehaviour
     {
         hasFoundedNation = true;
         Instantiate(nationOverlayPrefab, transform.position, Quaternion.identity);
-        Debug.Log("나라 생성!");
+        Debug.Log($"나라 '{countryName}'가 생성되었습니다!"); // 나라 이름을 콘솔에 출력
     }
 
     void OnDrawGizmosSelected()
@@ -140,6 +163,17 @@ public class Unit : MonoBehaviour
             SetNewRandomTarget();
             searchTime = 0f; // 타이머 초기화
         }
+    }
+
+    string GetCountryNameFromCulture(string cultureName)
+    {
+        if (countryNameLoader == null || countryNameLoader.countryNameData == null)
+        {
+            Debug.LogError("CountryNameLoader가 초기화되지 않았습니다.");
+            return "Unknown";
+        }
+
+        return countryNameLoader.GetRandomCountryName(cultureName);
     }
 
     void TryToJoinNearbyNation()
@@ -188,5 +222,12 @@ public class Unit : MonoBehaviour
             // 만약 주변에 나라가 없으면 그냥 나라를 세움
             FoundNation();
         }
+    }
+
+    string GetRandomGovernmentType()
+    {
+        // 예시: 정부 체제를 리스트로 정의하고 무작위로 선택
+        List<string> governmentTypes = new List<string> { "Republic", "Kingdom", "Empire", "Principality" };
+        return governmentTypes[Random.Range(0, governmentTypes.Count)];
     }
 }

@@ -1,0 +1,38 @@
+<GovernmentTypes>
+	<Government name="Kingdom">
+		<Prefixes>
+			<Prefix>Kingdom of</Prefix>
+			<Prefix>Realm of</Prefix>
+			<Prefix>Principality of</Prefix>
+		</Prefixes>
+		<Suffix></Suffix>
+	</Government>
+	<Government name="Republic">
+		<Prefixes>
+			<Prefix>Republic of</Prefix>
+			<Prefix>Free State of</Prefix>
+			<Prefix>Serenissima Repubblica</Prefix>
+		</Prefixes>
+		<Suffix></Suffix>
+	</Government>
+	<Government name="Duchy">
+		<Prefixes>
+			<Prefix>Duchy of</Prefix>
+			<Prefix>Grand Duchy of</Prefix>
+		</Prefixes>
+		<Suffix></Suffix>
+	</Government>
+	<Government name="Empire">
+		<Prefixes>
+			<Prefix>Empire of</Prefix>
+			<Prefix>Imperium of</Prefix>
+		</Prefixes>
+		<Suffix></Suffix>
+	</Government>
+	<Government name="Soviet">
+		<Prefixes>
+			<Prefix>Union of</Prefix>
+		</Prefixes>
+		<Suffix> Soviet Republics</Suffix>
+	</Government>
+</GovernmentTypes>

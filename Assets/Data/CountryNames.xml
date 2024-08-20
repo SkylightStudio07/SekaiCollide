@@ -1,0 +1,144 @@
+<CountryNames>
+	<Culture name="Western">
+		<!-- 독일 대문화권 -->
+		<SubCulture name="Germanic">
+			<!-- 바이에른 -->
+			<MicroCulture name="Bavarian">
+				<Names>
+					<Name>Bavaria</Name>
+					<Name>Munich</Name>
+					<Name>Wittelsbach</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 프로이센 -->
+			<MicroCulture name="Preussen">
+				<Names>
+					<Name>Preussen</Name>
+					<Name>Brandenburg</Name>
+					<Name>Magdeburg</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 오스트리아 -->
+			<MicroCulture name="Austrian">
+				<Names>
+					<Name>Austria</Name>
+					<Name>Graz</Name>
+					<Name>Eisenstadt</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 라인란트 -->
+			<MicroCulture name="Rheinland">
+				<Names>
+					<Name>Koblenz</Name>
+					<Name>Trier</Name>
+					<Name>Worms</Name>
+				</Names>
+			</MicroCulture>
+		</SubCulture>
+		<!-- 프랑스 대문화권 -->
+		<SubCulture name="French">
+			<!-- 옥시타니아 -->
+			<MicroCulture name="Occitanie">
+				<Names>
+					<Name>Provence</Name>
+					<Name>Tolosa</Name>
+					<Name>Montpellier</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 일드프랑스 -->
+			<MicroCulture name="Ile-de-France">
+				<Names>
+					<Name>Val-d'Oise</Name>
+					<Name>Yvelines</Name>
+					<Name>Essonne</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 노르망디 -->
+			<MicroCulture name="Normandie">
+				<Names>
+					<Name>Normandie</Name>
+					<Name>Rouen</Name>
+					<Name>Le Havre</Name>
+				</Names>
+			</MicroCulture>
+		</SubCulture>
+		<!-- 동슬라브 -->
+		<SubCulture name="Western Slavic">
+			<!-- 폴란드 -->
+			<MicroCulture name="Polish">
+				<Names>
+					<Name>Mawopolskie</Name>
+					<Name>Kraków</Name>
+					<Name>Warszawa</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 체코 -->
+			<MicroCulture name="Czechs">
+				<Names>
+					<Name>Moravia</Name>
+					<Name>Bohemia</Name>
+					<Name>Praha</Name>
+				</Names>
+			</MicroCulture>
+		</SubCulture>
+		<!-- 동슬라브 -->
+		<SubCulture name="Iberian">
+			<!-- 카탈루냐 -->
+			<MicroCulture name="Catalonian">
+				<Names>
+					<Name>Barcelona</Name>
+					<Name>Girona</Name>
+				</Names>
+			</MicroCulture>
+			<!-- 카스티야 -->
+			<MicroCulture name="Castillo">
+				<Names>
+					<Name>Toledo</Name>
+					<Name>Valladolid</Name>
+				</Names>
+			</MicroCulture>
+			<MicroCulture name="Portugal">
+				<Names>
+					<Name>Lisbon</Name>
+				</Names>
+			</MicroCulture>
+			<MicroCulture name="Asturias">
+				<Names>
+					<Name>Gijón</Name>
+					<Name>Asturias</Name>
+				</Names>
+			</MicroCulture>
+		</SubCulture>
+		<SubCulture name="Eastern Slavic">
+			<MicroCulture name="Ruthenian">
+				<Names>
+					<Name>Smolensk</Name>
+					<Name>Kiev</Name>
+					<Name>Polotsk</Name>
+					<Name>Chernihiv</Name>
+				</Names>
+			</MicroCulture>
+			<MicroCulture name="Moskovien">
+				<Names>
+					<Name>Tver</Name>
+					<Name>Moskovien</Name>
+					<Name>Ryazan</Name>
+				</Names>
+			</MicroCulture>
+			<MicroCulture name="Rusyns">
+				<Names>
+					<Name>Pannonia</Name>
+					<Name>Lemkos</Name>
+					<Name>Hutsuls</Name>
+					<Name>Boykos</Name>
+				</Names>
+			</MicroCulture>
+			<MicroCulture name="Novgorod">
+				<Names>
+					<Name>Veliky Novgorod</Name>
+					<Name>Nizhny Novgorod</Name>
+				</Names>
+			</MicroCulture>
+		</SubCulture>
+	</Culture>
+</CountryNames>

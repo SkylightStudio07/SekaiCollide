@@ -97,8 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a74f6eed215b8ba4a8cc69db6f2502ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitName: The Example Man
-  nationLoader: {fileID: 0}
   moveSpeed: 2
   wanderRadius: 5
   foundingProbability: 0.01
@@ -106,3 +104,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   nationOverlayPrefab: {fileID: 3419472461174162154, guid: 893f55cccf6615c4c933a95b5d6da74c, type: 3}
+  checkRadius: 10
+  UnitName: Jane Doe
+  countryName: 

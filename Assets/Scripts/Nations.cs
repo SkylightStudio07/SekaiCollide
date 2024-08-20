@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using UnityEngine;
 
 [XmlRoot("Nations")]
 public class Nations
@@ -18,6 +19,7 @@ public class Race
     public List<CulturalGroup> CulturalSphere = new List<CulturalGroup>();
 }
 
+[System.Serializable] // 유니티 직렬화 지원을 위해 추가
 public class CulturalGroup
 {
     [XmlElement("MajorCulture")]

@@ -1,0 +1,111 @@
+    <Race name="Elf">
+        <CulturalSphere>
+            <Culture>
+                <MajorCulture>Old Elven Empire</MajorCulture>
+                    <SubCulture>High Elves</SubCulture>
+                        <MicroCulture>Royal Elves</MicroCulture>
+            </Culture>
+            <Culture>
+                <MajorCulture>Old Elven Empire</MajorCulture>
+                    <SubCulture>High Elves</SubCulture>
+                        <MicroCulture>Arcana Elves</MicroCulture>
+            </Culture>
+            <Culture>
+                <MajorCulture>Dark Elf</MajorCulture>
+                    <SubCulture>Descendents</SubCulture>
+                        <MicroCulture>Wa-reima Elves</MicroCulture>
+            </Culture>
+      </CulturalSphere>
+    </Race>
+
+            <!-- 이탈리아 대문화권 -->
+            <Culture>
+                <MajorCulture>Western</MajorCulture>
+                    <SubCulture>Italian</SubCulture>
+                        <MicroCulture>Rome</MicroCulture>
+            </Culture>
+            <Culture>
+                <MajorCulture>Western</MajorCulture>
+                    <SubCulture>Italian</SubCulture>
+                        <MicroCulture>Napoli</MicroCulture>
+            </Culture>
+            <Culture>
+                <MajorCulture>Western</MajorCulture>
+                    <SubCulture>Italian</SubCulture>
+                        <MicroCulture>Lombardian</MicroCulture>
+            </Culture>
+            <Culture>
+                <MajorCulture>Western</MajorCulture>
+                    <SubCulture>Italian</SubCulture>
+                        <MicroCulture>Sicilia</MicroCulture>
+            </Culture>
+        <!-- 극동 문화권 섹션 -->
+         <!-- 중화 대문화권 -->
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Chinese</SubCulture>
+                    <MicroCulture>Han</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Chinese</SubCulture>
+                    <MicroCulture>Yi</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Chinese</SubCulture>
+                    <MicroCulture>Zhuang</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Chinese</SubCulture>
+                    <MicroCulture>Xianbei</MicroCulture>
+        </Culture>
+        <!-- 일본 대문화권 -->
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Yamato</SubCulture>
+                    <MicroCulture>Kyushu</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Yamato</SubCulture>
+                    <MicroCulture>Kansai</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Yamato</SubCulture>
+                    <MicroCulture>Kanto</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Yamato</SubCulture>
+                    <MicroCulture>Tohoku</MicroCulture>
+        </Culture>
+        <!-- 한국 대문화권 -->
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Korean</SubCulture>
+                    <MicroCulture>Silla</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Korean</SubCulture>
+                    <MicroCulture>Bakjae</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Korean</SubCulture>
+                    <MicroCulture>Goguryoe</MicroCulture>
+        </Culture>
+        <Culture>
+            <MajorCulture>Sinosphere</MajorCulture>
+                <SubCulture>Korean</SubCulture>
+                    <MicroCulture>Kaya</MicroCulture>
+        </Culture>
+        <!-- 북극 대문화권 -->
+        <Culture>
+            <MajorCulture>Arctic</MajorCulture>
+                <SubCulture>Ainu</SubCulture>
+                    <MicroCulture>Ainu</MicroCulture>
+        </Culture>
