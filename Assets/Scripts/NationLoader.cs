@@ -34,7 +34,7 @@ public class NationLoader : MonoBehaviour
     {
         if (!File.Exists(path))
         {
-            Debug.LogError($"XML 파일을 찾을 수 없습니다: {path}");
+            Debug.LogError($"XML 파일 찾기 실패 : {path}");
             return null;
         }
 
@@ -48,12 +48,12 @@ public class NationLoader : MonoBehaviour
         }
         catch (IOException e)
         {
-            Debug.LogError($"파일을 여는 도중 오류가 발생했습니다: {e.Message}");
+            Debug.LogError($"입출력 오류 발생: {e.Message}");
             return null;
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"XML 데이터를 파싱하는 도중 오류가 발생했습니다: {e.Message}");
+            Debug.LogError($"XML 파싱 도중 오류가 발생: {e.Message}");
             return null;
         }
     }
