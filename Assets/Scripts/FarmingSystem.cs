@@ -25,7 +25,7 @@ public class FarmingSystem : MonoBehaviour
     }
 
     // 경작 가능한지 확인 (기존 타일맵에서 특정 타일만 경작 가능하도록 설정)
-    bool CanCultivate(Vector3Int tilePosition)
+    public bool CanCultivate(Vector3Int tilePosition)
     {
         TileBase tile = groundTilemap.GetTile(tilePosition);
         return tile != null; // 예시로 간단히 타일이 있는지 확인 (필요 시 특정 타일만 경작 가능하도록 추가 가능)
