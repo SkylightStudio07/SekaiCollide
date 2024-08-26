@@ -26,10 +26,11 @@ public class Unit : MonoBehaviour
     [Header("Nation Info")]
     [SerializeField] private string nationName; // 유닛이 세운 나라의 이름
 
-    private float actionInterval = 3f; // 행동 간 간격 (초)
+    private float actionInterval = 7f; // 행동 간 간격 (초)
     private float actionTimer = 0f; // 다음 행동까지의 타이머
 
     private bool isAtTargetPosition = false; // 유닛이 타겟 위치에 도착했는지 여부
+    private bool isPerformingTask = false; // 유닛이 작업 중인지 여부
 
     void Start()
     {
@@ -68,55 +69,90 @@ public class Unit : MonoBehaviour
             {
                 if (IsSpaceAvailable())
                 {
-                    FoundNation();
+                    FoundNation(); // 국가 수립
                 }
             }
         }
         else
         {
-            // 행동 타이머 업데이트
-            actionTimer -= Time.deltaTime;
-
-            // 유닛이 타겟 위치에 도착하면 경작 작업을 수행
-            if (isAtTargetPosition && actionTimer <= 0f)
+            // 유닛이 작업 중이 아닐 때만 행동
+            if (!isPerformingTask)
             {
-                StartCoroutine(PerformPostNationTasks()); // Coroutine을 통해 경작 작업 수행
-                actionTimer = actionInterval; // 다음 행동을 위한 타이머 초기화
+                // 행동 타이머 업데이트
+                actionTimer -= Time.deltaTime;
+
+                // 유닛이 타겟 위치에 도착하면 경작 작업을 수행
+                if (isAtTargetPosition && actionTimer <= 0f)
+                {
+                    StartCoroutine(PerformPostNationTasks()); // Coroutine을 통해 경작 작업 수행
+                    actionTimer = actionInterval; // 다음 행동을 위한 타이머 초기화
+                }
             }
         }
 
-        // 타겟 위치로 이동
-        MoveToTarget();
+        // 유닛이 작업 중이 아닐 때만 타겟 위치로 이동
+        if (!isPerformingTask)
+        {
+            MoveToTarget();
+        }
     }
 
     IEnumerator PerformPostNationTasks()
     {
-        // 도착한 후 잠시 대기
-        yield return new WaitForSeconds(0.5f); // 0.5초 대기
+        isPerformingTask = true; // 작업 중으로 표시
+
+
+        int randomTask = Random.Range(0, 2);
+
+        switch (randomTask)
+        {
+            case 0:
+                Debug.Log("유닛 휴식중...");
+                yield return StartCoroutine(Rest());
+                break;
+            case 1:
+                Debug.Log("유닛 농사 로직 수행 시작...");
+                yield return StartCoroutine(CultivateLand());
+                break;
+        }
+
 
         // 경작 작업을 수행
-        CultivateLand();
+        // yield return StartCoroutine(CultivateLand());
 
-        // 경작 작업이 끝난 후 새로운 타겟 위치 설정
+        // 경작 작업이 완료된 후 새로운 타겟 위치 설정
+        Debug.Log("새 타겟 위치 설정중...");
         SetNewRandomTarget();
+
+        isPerformingTask = false; // 작업 완료
     }
 
-    void CultivateLand()
+    IEnumerator Rest()
+    {
+        yield return new WaitForSeconds(3.0f);
+    }
+
+    IEnumerator CultivateLand()
     {
         if (farmingSystem == null)
         {
             Debug.LogError("FarmingSystem이 설정되지 않았습니다.");
-            return;
+            yield break;
         }
 
-        // targetPosition을 타일맵 좌표로 변환
-        Vector3Int tilePosition = farmingSystem.groundTilemap.WorldToCell(targetPosition);
+        // 유닛의 현재 위치를 타일맵 좌표로 변환
+        Vector3Int tilePosition = farmingSystem.groundTilemap.WorldToCell(transform.position);
 
         if (farmingSystem.CanCultivate(tilePosition))
         {
             // 경작 작업 수행
+            Debug.Log("경작 작업 시작...");
             farmingSystem.CultivateLand(tilePosition);
-            Debug.Log($"농사 작업 수행 중... 위치: {farmingSystem.groundTilemap.CellToWorld(tilePosition)}");
+
+            // 경작 작업이 완료될 때까지 대기
+            yield return new WaitUntil(() => farmingSystem.IsCultivationComplete(tilePosition));
+
+            Debug.Log($"농사 작업 수행 중!: {farmingSystem.groundTilemap.CellToWorld(tilePosition)}");
         }
         else
         {
@@ -149,7 +185,7 @@ public class Unit : MonoBehaviour
         }
 
         Debug.Log($"새로운 타겟 위치 설정: {targetPosition}");
-        isAtTargetPosition = false; // 새로운 타겟을 설정한 후, 아직 도착하지 않았음을 표시
+        isAtTargetPosition = false; 
     }
 
     bool IsValidTerritory()
@@ -164,25 +200,37 @@ public class Unit : MonoBehaviour
         return nearbyNations.Length == 0;
     }
 
+    bool CanFoundNation()
+    {
+        // 유닛이 나라를 세울 수 있는 조건을 정의 (예: 특정 위치, 자원 조건 등)
+        return true; // 조건을 임의로 true로 설정
+    }
+
     void FoundNation()
     {
-        hasFoundedNation = true;
-        nationCenter = transform.position; // 나라의 중심을 유닛의 현재 위치로 설정
-        Instantiate(nationOverlayPrefab, transform.position, Quaternion.identity);
+        NationData nationData = NationLoader.Instance.GetRandomNationData();
 
-        // 나라 이름 설정
-        if (countryNameLoader != null)
+        if (nationData != null)
         {
-            nationName = countryNameLoader.GetRandomCountryName(microCulture); // 유닛의 마이크로 문화권 기반으로 나라 이름 설정
-            Debug.Log($"나라 이름: {nationName}");
+            Nation newNation = new Nation(nationData.Name, nationData.GovernmentType, nationData.CultureGroup);
+            NationManager.Instance.AddNation(newNation);
+
+            // 국가 오버레이 프리팹 생성
+            if (nationOverlayPrefab != null)
+            {
+                Instantiate(nationOverlayPrefab, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogError("NationOverlayPrefab이 설정되지 않았습니다.");
+            }
+
+            Debug.Log($"국가 생성: {newNation.nationName}");
+            hasFoundedNation = true;
         }
         else
         {
-            nationName = "Unknown";
-            Debug.LogError("CountryNameLoader를 찾지 못해 기본 이름을 사용합니다.");
+            Debug.LogError("국가 데이터를 생성하는데 실패했습니다.");
         }
-
-        // 나라를 세운 후 새로운 타겟 설정
-        SetNewRandomTarget();
     }
 }

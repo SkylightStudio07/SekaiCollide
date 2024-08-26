@@ -1,32 +1,36 @@
 using System.IO;
 using System.Xml.Serialization;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NationLoader : MonoBehaviour
 {
-    public string xmlFilePath = "Assets/Data/nations.xml"; // XML 파일 경로
+    public static NationLoader Instance { get; private set; } // 싱글톤 패턴
+
     public Nations nationsData;
 
-    void Start()
+    void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            LoadNationsData();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void LoadNationsData()
+    {
+        string xmlFilePath = "Assets/Data/nations.xml";
         nationsData = LoadNations(xmlFilePath);
 
         if (nationsData == null || nationsData.Races.Count == 0)
         {
             Debug.LogError("XML 데이터가 로드되지 않았거나, 데이터가 없습니다.");
-            return;
-        }
-
-        // XML 데이터를 출력하여 확인
-        foreach (var race in nationsData.Races)
-        {
-            Debug.Log("종족: " + race.Name);
-            foreach (var culture in race.CulturalSphere)
-            {
-                Debug.Log($" - 대문화권: {culture.MajorCulture}");
-                Debug.Log($"   소문화권: {culture.SubCulture}");
-                Debug.Log($"   마이크로 문화권: {culture.MicroCulture}");
-            }
         }
     }
 
@@ -34,7 +38,7 @@ public class NationLoader : MonoBehaviour
     {
         if (!File.Exists(path))
         {
-            Debug.LogError($"XML 파일 찾기 실패 : {path}");
+            Debug.LogError($"XML 파일 찾기 실패: {path}");
             return null;
         }
 
@@ -53,8 +57,31 @@ public class NationLoader : MonoBehaviour
         }
         catch (System.Exception e)
         {
-            Debug.LogError($"XML 파싱 도중 오류가 발생: {e.Message}");
+            Debug.LogError($"XML 파싱 도중 오류 발생: {e.Message}");
             return null;
         }
+    }
+
+    // 유닛이 건국할 때 사용되는 메서드: 국가 이름과 데이터를 반환
+    public NationData GetRandomNationData()
+    {
+        if (nationsData == null || nationsData.Races.Count == 0)
+        {
+            return null;
+        }
+
+        // 예시: 랜덤하게 종족과 문화권을 선택
+        var randomRace = nationsData.Races[Random.Range(0, nationsData.Races.Count)];
+        var randomCulture = randomRace.CulturalSphere[Random.Range(0, randomRace.CulturalSphere.Count)];
+
+        // 국가 이름과 데이터 생성
+        NationData newNation = new NationData
+        {
+            Name = randomCulture.MicroCulture,
+            GovernmentType = "Kingdom", // 정부 형태를 설정 (임의로 설정하거나 유닛의 속성에 따라 다르게 설정 가능)
+            CultureGroup = randomCulture.MajorCulture
+        };
+
+        return newNation;
     }
 }
