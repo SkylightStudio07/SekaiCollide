@@ -70,18 +70,19 @@ public class NationLoader : MonoBehaviour
             return null;
         }
 
-        // 예시: 랜덤하게 종족과 문화권을 선택
+        // 무작위로 종족과 문화권을 선택
         var randomRace = nationsData.Races[Random.Range(0, nationsData.Races.Count)];
         var randomCulture = randomRace.CulturalSphere[Random.Range(0, randomRace.CulturalSphere.Count)];
 
-        // 국가 이름과 데이터 생성
+        // NationData를 생성하고 CulturalGroup을 포함시킴
         NationData newNation = new NationData
         {
             Name = randomCulture.MicroCulture,
-            GovernmentType = "Kingdom", // 정부 형태를 설정 (임의로 설정하거나 유닛의 속성에 따라 다르게 설정 가능)
-            CultureGroup = randomCulture.MajorCulture
+            GovernmentType = "Kingdom", // 정부 형태를 설정
+            cultureGroup = randomCulture // CulturalGroup 전체를 NationData에 포함
         };
 
         return newNation;
     }
+
 }

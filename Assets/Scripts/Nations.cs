@@ -40,5 +40,5 @@ public class NationData
     public string GovernmentType;
 
     [XmlElement("CultureGroup")]
-    public string CultureGroup;
+    public CulturalGroup cultureGroup;
 }

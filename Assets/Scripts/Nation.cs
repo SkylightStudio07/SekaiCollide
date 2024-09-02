@@ -3,26 +3,53 @@ using UnityEngine;
 [System.Serializable]
 public class Nation
 {
-    public string nationName; // 국가 이름
-    public string governmentType; // 국가 체제
-    public int population; // 인구 수
-    public float food; // 식량
-    public string cultureGroup; // 문화권
-    public float wood; // 목재
-    public float ore; // 광석
+    public string nationName;
+    public string governmentType;
 
-    public Nation(string name, string governmentType, string cultureGroup)
+    public string majorCulture;
+    public string subCulture;
+    public string microCulture;
+
+    public float food;
+    public float timber;
+    public float POP;
+
+    public GameObject nationOverlay;    
+
+    public Nation(string name, string governmentType, string majorCulture, string subCulture, string microCulture)
     {
         this.nationName = name;
         this.governmentType = governmentType;
-        this.cultureGroup = cultureGroup;
+        this.majorCulture = majorCulture;
+        this.subCulture = subCulture;
+        this.microCulture = microCulture;
 
-        // 초기 자원 값 설정
-        this.population = 100;
-        this.food = 500f;
-        this.wood = 300f;
-        this.ore = 200f;
+        this.food = 10f;  // 시작 식량 (예: 10 단위)
+        this.timber = 5f; // 시작 목재 (예: 5 단위)
+        this.POP = 1f;    // 유로파의 인력 내지는 스텔라리스의 팝을 생각해야 한다.
     }
 
-    // 추가적인 기능들...
+    public void ManagePopulationAndFood()
+    {
+        // 인구가 소비하는 식량 계산
+        float foodConsumed = POP * 2f;
+
+        // 남은 식량 계산
+        food -= foodConsumed;
+
+        if (food < 0)
+        {
+            // 식량이 부족할 경우 인구 감소... 라는 로직을 구현해야 한다. 지금 건들 일은 아님.
+        }
+        else
+        {
+            // 식량이 충분할 경우 점진적으로 인구가 증가하는 로직이 필요.
+        }
+    }
+
+    public void AddFood(float amount)
+    {
+        food += amount;
+    }
+
 }

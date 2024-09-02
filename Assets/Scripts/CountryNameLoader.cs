@@ -13,7 +13,7 @@ public class CountryNameLoader : MonoBehaviour
 
         if (countryNameData == null)
         {
-            Debug.LogError("XML 데이터를 로드하지 못했습니다.");
+            Debug.LogError("XML 데이터를 로드 실패.");
             return;
         }
 
@@ -88,4 +88,27 @@ public class CountryNameLoader : MonoBehaviour
         Debug.LogError($"'{cultureName}' 문화권을 찾을 수 없습니다.");
         return "Unknown"; // 찾지 못한 경우 기본 값 반환
     }
+
+    /* 랜덤 국가 생성 레거시 코드
+    public NationData GetRandomNationData()
+    {
+        if (nationsData == null || nationsData.Races.Count == 0)
+        {
+            return null;
+        }
+
+        var randomRace = nationsData.Races[Random.Range(0, nationsData.Races.Count)];
+        var randomCulture = randomRace.CulturalSphere[Random.Range(0, randomRace.CulturalSphere.Count)];
+
+
+        NationData newNation = new NationData
+        {
+            Name = randomCulture.MicroCulture,
+            GovernmentType = "Kingdom", 
+            cultureGroup = randomCulture 
+        };
+
+        return newNation;
+    }
+    */
 }
